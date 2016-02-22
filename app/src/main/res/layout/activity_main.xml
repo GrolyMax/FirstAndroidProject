@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Android Support Design  可以让我们在低版本的Android上使用Material Design
+CoordinatorLayout这个控件的作用是让它的子view更好的去协作，一般都会用这个layout来包裹他的子view
+ -->
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+    <!--
+     AppBarLayout这个控件也是让子view共同协作的，它和CoordinatorLayout的区别在于：
+     AppBarLayout是在效果上的协作，用AppBarLayout包裹的子view会以一个整体的形式作为AppBar。
+     CoordinatorLayout是在行为上的一种协作，尤其是在滚动的协作上，可以说非常完美
+
+     -->
+    <android.support.design.widget.AppBarLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:theme="@style/AppTheme.AppBarOverlay">
+        <!--
+         Toolbar增加了一条配置 app:layout_scrollFlags="scroll|enterAlways"  这条配置可以在
+         其他控件中配置，表示这个控件是可以滚出屏幕的，而且是随时可以再显示
+         layout_scrollFlags的其他取值有：
+         1. scroll 谁要滚出屏幕，谁就设置这个值
+         2. enterAlways 其他向上滑动时，可以立即显示出来
+         3. exitUntilCollapsed 将关闭滚动直到它被折叠起来(有 minHeight) 并且一直保持这样
+         4. enterAlwaysCollapsed 定义了 View 是如何回到屏幕的，当你的 view 已经声明了一个最小高度
+         (minHeight) 并且你使用了这个标志，你的 View 只有在回到这个最小的高度的时候才会展开，只有当
+         view 已经到达顶部之后它才会重新展开全部高度
+         -->
+        <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+        <!--
+    TabLayout可代替PagerTabStrip
+    1. app:tabIndicatorColor tab的指示符颜色
+    2. app:tabSelectedTextColor 选择tab的文本颜色
+    3. app:tabTextColor 普通tab字体颜色
+    4. app:tabMode 模式，可选fixed和scrollable fixed是指固定个数，scrollable是可以横行滚动的（逼格高）
+    5. app:tabGravity 对齐方式，可选fill和center
+
+     -->
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="#FFFF0000"
+            app:tabSelectedTextColor="#FF0000FF"
+            app:tabTextColor="#FFFFFFFF"
+            app:tabMode="scrollable"
+            app:tabGravity="fill"/>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_main" />
+    <!--
+     以前创建圆形的button需要自定义Shape，但那样文本的显示不好居中，需用自定义控件去解决
+     FloatingActionButton可以轻松的创建圆形Button,FloatingActionButton具有更绚丽的效果
+     1. app:backgroundTint是指定默认的背景颜色
+     2. app:rippleColor是指定点击时的背景颜色
+     3. app:borderWidth border的宽度
+     4. app:fabSize是指FloatingActionButton的大小，可选normal|mini
+     5. app:elevation 可以看出该空间有一个海拔的高度
+     6. app:pressedTranslationZ 哈，按下去时的z轴的偏移
+     -->
+    <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_dialog_email"
+        app:backgroundTint="#FF00FF00"
+        app:rippleColor="#FF0000FF"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        app:elevation="10dp"
+        app:pressedTranslationZ="20dp"
+        />
+
+
+</android.support.design.widget.CoordinatorLayout>
