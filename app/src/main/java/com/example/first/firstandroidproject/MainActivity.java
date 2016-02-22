@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Snackbar是一个介于Dialog和Toast之前的玩意，可以在作为一种用户选择提醒时使用。
+                //dd
                 Snackbar.make(view, "真的点我了？", Snackbar.LENGTH_LONG)
                         .setAction("点了", new View.OnClickListener() {
 
